@@ -16,12 +16,7 @@ interface IParameter {
     countryCode?: string;
 }
 
-interface IResponse {
-    payload: string;
-    qrCode: string;
-}
-
-async function QrCodePix(parameter: IParameter): Promise<IResponse> {
+function QrCodePix(parameter: IParameter) {
     const { version, key, city, name, value, guid, message, cep, notRepeatPayment, currency, countryCode } = parameter;
 
     if (version !== '01') {
@@ -79,11 +74,17 @@ async function QrCodePix(parameter: IParameter): Promise<IResponse> {
 
     const payloadPIX = `${payloadString}${crcResult}`;
 
-    const qrCodeBase64 = await qrcode.toDataURL(payloadPIX);
+    function toPayload() :string {
+        return payloadPIX;
+    }
+
+    async function generateQrCode() : Promise<string> {
+        return await qrcode.toDataURL(payloadPIX);
+    }
 
     return {
-        payload: payloadPIX,
-        qrCode: qrCodeBase64,
+        payload: toPayload,
+        base64: generateQrCode,
     };
 }
 

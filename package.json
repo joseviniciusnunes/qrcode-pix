@@ -1,7 +1,7 @@
 {
     "name": "qrcode-pix",
     "author": "José Vinicius <joseviniciuus@outlook.com>",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "main": "lib/index.js",
     "license": "MIT",
     "repository": "joseviniciusnunes/qrcode-pix",
@@ -16,7 +16,7 @@
         "yup": "^0.30.0"
     },
     "scripts": {
-        "start": "node index.js",
+        "example": "ts-node-dev ./example/example.ts",
         "test": "jest --detectOpenHandles --ci",
         "build": "tsc --build"
     },
