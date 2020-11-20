@@ -28,6 +28,8 @@ async function QrCodePix(parameter: IParameter): Promise<IResponse> {
 
     string().min(2, 'countryCode: 2 characters').max(2, 'countryCode: 2 characters').nullable().validateSync(countryCode);
 
+    string().min(8, 'cep: 8 characters').max(8, 'cep: 8 characters').nullable().validateSync(cep);
+
     const payloadKeyString = generateKey(key, message);
 
     const payload = [];
@@ -102,5 +104,4 @@ function genEMV(id: string, parameter: string): string {
     return `${id}${len}${parameter}`;
 }
 
-export {QrCodePix};
-
+export { QrCodePix };
