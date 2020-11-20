@@ -1,9 +1,14 @@
 {
     "name": "node-qrcode-pix",
-    "author": "joseviniciusnunes",
+    "author": "José Vinicius <joseviniciuus@outlook.com>",
     "version": "1.0.0",
-    "main": "lib/index.ts",
+    "main": "lib/index.js",
     "license": "MIT",
+    "repository": "joseviniciusnunes/node-qrcode-pix",
+    "keywords": [
+        "qrcode",
+        "pix"
+    ],
     "dependencies": {
         "polycrc": "^1.0.1",
         "qrcode": "^1.4.4",
