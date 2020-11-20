@@ -9,6 +9,9 @@
         "qrcode",
         "pix"
     ],
+    "bin": {
+        "node-qrcode-pix": "bin/index.js"
+    },
     "dependencies": {
         "polycrc": "^1.0.1",
         "qrcode": "^1.4.4",
