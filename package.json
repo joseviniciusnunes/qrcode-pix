@@ -1,10 +1,10 @@
 {
-    "name": "node-qrcode-pix",
+    "name": "qrcode-pix",
     "author": "José Vinicius <joseviniciuus@outlook.com>",
     "version": "1.0.0",
     "main": "lib/index.js",
     "license": "MIT",
-    "repository": "joseviniciusnunes/node-qrcode-pix",
+    "repository": "joseviniciusnunes/qrcode-pix",
     "keywords": [
         "qrcode",
         "pix"
