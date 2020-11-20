@@ -17,7 +17,8 @@
     "scripts": {
         "start": "node index.js",
         "dev": "ts-node-dev --transpile-only --ignore-watch node_modules lib/index.ts",
-        "test": "ts-node-dev --transpile-only --ignore-watch node_modules __tests__/QrCode.test.ts"
+        "test": "ts-node-dev --transpile-only --ignore-watch node_modules __tests__/QrCode.test.ts",
+        "build": "tsc --build"
     },
     "devDependencies": {
         "@types/polycrc": "^0.1.0",
