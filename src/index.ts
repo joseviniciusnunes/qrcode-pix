@@ -74,17 +74,9 @@ function QrCodePix(parameter: IParameter) {
 
     const payloadPIX = `${payloadString}${crcResult}`;
 
-    function toPayload() :string {
-        return payloadPIX;
-    }
-
-    async function generateQrCode() : Promise<string> {
-        return await qrcode.toDataURL(payloadPIX);
-    }
-
     return {
-        payload: toPayload,
-        base64: generateQrCode,
+        payload: () => payloadPIX,
+        base64: () => qrcode.toDataURL(payloadPIX),
     };
 }
 

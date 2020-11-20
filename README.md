@@ -11,7 +11,7 @@ yarn add qrcode-pix
 ```js
 import { QrCodePix } from 'qrcode-pix';
 
-QrCodePix({
+const qrCodePix = QrCodePix({
     version: '01',
     key: 'test@mail.com.br', //or any PIX key
     name: 'Fulano de Tal',
@@ -20,9 +20,10 @@ QrCodePix({
     message: 'Pay me :)',
     cep: '99999999',
     value: 150.99,
-}).then((res) => {
-    console.log(res); //{payload: '000201010...', qrcode: 'data:image/png;base64,...'}
 });
+
+console.log(qrCodePix.payload()); // '00020101021126510014BR.GOV.BCB.PIX...'
+console.log(await qrCodePix.base64()); // 'data:image/png;base64,iVBORw0...'
 ```
 
 ## Interface

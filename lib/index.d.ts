@@ -11,9 +11,8 @@ interface IParameter {
     currency?: number;
     countryCode?: string;
 }
-interface IResponse {
-    payload: string;
-    qrCode: string;
-}
-declare function QrCodePix(parameter: IParameter): Promise<IResponse>;
+declare function QrCodePix(parameter: IParameter): {
+    payload: () => string;
+    base64: () => Promise<string>;
+};
 export { QrCodePix };
