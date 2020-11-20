@@ -1,4 +1,4 @@
-import {QrCodePix} from '../lib/index';
+import { QrCodePix } from '../src/index';
 
 async function start() {
     const response = await QrCodePix({
