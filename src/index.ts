@@ -3,7 +3,7 @@ import { crc } from 'polycrc';
 import { string } from 'yup';
 
 interface IParameter {
-    version: number;
+    version: string;
     key: string;
     city: string;
     name: string;
@@ -24,6 +24,10 @@ interface IResponse {
 async function QrCodePix(parameter: IParameter): Promise<IResponse> {
     const { version, key, city, name, value, guid, message, cep, notRepeatPayment, currency, countryCode } = parameter;
 
+    if (version !== '01') {
+        throw new Error("version is fixed '01'");
+    }
+
     string().min(1, 'name: 1-25 characters').max(25, 'name: 1-25 characters').validateSync(name);
 
     string().min(2, 'countryCode: 2 characters').max(2, 'countryCode: 2 characters').nullable().validateSync(countryCode);
@@ -33,7 +37,7 @@ async function QrCodePix(parameter: IParameter): Promise<IResponse> {
     const payloadKeyString = generateKey(key, message);
 
     const payload = [];
-    payload.push(genEMV('00', String(version).padStart(2, '0')));
+    payload.push(genEMV('00', version));
     payload.push(genEMV('01', !notRepeatPayment ? '11' : '12'));
     payload.push(genEMV('26', payloadKeyString));
     payload.push(genEMV('52', '0000'));

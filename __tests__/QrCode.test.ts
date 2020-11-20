@@ -1,9 +1,18 @@
 import { QrCodePix } from '../src/index';
 
 describe('QRCode PIX Generate', () => {
+    it('Test validate version schema', async () => {
+        const param = {
+            version: '02', //02 is not valid
+            key: 'test@mail.com.br',
+            name: 'Fulano de Tal',
+            city: 'SAO PAULO',
+        }
+        await expect(QrCodePix(param)).rejects.toThrow(`version is fixed '01'`);
+    });
     it('01 - Basic Payload', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -12,7 +21,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('02 - Basic - Currency', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -22,7 +31,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('03 - Basic - Value', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -32,7 +41,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('04 - Basic - countryCode', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -42,7 +51,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('05 - Basic - cep', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -52,7 +61,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('06 - Basic - guid', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -62,7 +71,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('07 - Basic - message', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
@@ -72,7 +81,7 @@ describe('QRCode PIX Generate', () => {
     });
     it('08 - Basic - notRepeatPayment', async () => {
         const response = await QrCodePix({
-            version: 1,
+            version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',

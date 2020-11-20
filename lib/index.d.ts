@@ -1,5 +1,5 @@
 interface IParameter {
-    version: number;
+    version: string;
     key: string;
     city: string;
     name: string;
