@@ -1,7 +1,7 @@
-import QrCode from '../lib/index';
+import {QrCodePix} from '../lib/index';
 
 async function start() {
-    const response = await QrCode.generate({
+    const response = await QrCodePix({
         version: 1,
         key: 'test@mail.com.br',
         value: 1,
