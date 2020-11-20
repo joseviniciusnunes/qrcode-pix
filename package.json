@@ -1,0 +1,24 @@
+{
+    "name": "node-qrcode-pix",
+    "author": "joseviniciusnunes",
+    "version": "1.0.0",
+    "main": "lib/index.ts",
+    "license": "MIT",
+    "dependencies": {
+        "polycrc": "^1.0.1",
+        "qrcode": "^1.4.4",
+        "yup": "^0.30.0"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "dev": "ts-node-dev --transpile-only --ignore-watch node_modules lib/index.ts",
+        "test": "ts-node-dev --transpile-only --ignore-watch node_modules __tests__/QrCode.test.ts"
+    },
+    "devDependencies": {
+        "@types/polycrc": "^0.1.0",
+        "@types/qrcode": "^1.3.5",
+        "@types/yup": "^0.29.9",
+        "ts-node-dev": "^1.0.0",
+        "typescript": "^4.1.2"
+    }
+}
