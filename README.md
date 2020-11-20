@@ -13,9 +13,13 @@ import { QrCodePix } from 'qrcode-pix';
 
 QrCodePix({
     version: '01',
-    key: 'test@mail.com.br',
+    key: 'test@mail.com.br', //or any PIX key
     name: 'Fulano de Tal',
     city: 'SAO PAULO',
+    guid: 'YOUR_GUID',
+    message: 'Pay me :)',
+    cep: '99999999',
+    value: 150.99,
 }).then((res) => {
     console.log(res); //{payload: '000201010...', qrcode: 'data:image/png;base64,...'}
 });
@@ -33,8 +37,8 @@ interface IParameter {
     guid?: string;
     message?: string;
     cep?: string;
-    notRepeatPayment?: boolean;
-    currency?: number;
-    countryCode?: string;
+    notRepeatPayment?: boolean; //default: false
+    currency?: number; //default: 986 ('R$')
+    countryCode?: string; //default: 'BR'
 }
 ```
