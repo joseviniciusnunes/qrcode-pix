@@ -21,7 +21,7 @@ interface IResponse {
     qrCode: string;
 }
 
-async function generate(parameter: IParameter): Promise<IResponse> {
+async function QrCodePix(parameter: IParameter): Promise<IResponse> {
     const { version, key, city, name, value, guid, message, cep, notRepeatPayment, currency, countryCode } = parameter;
 
     string().min(1, 'name: 1-25 characters').max(25, 'name: 1-25 characters').validateSync(name);
@@ -102,4 +102,5 @@ function genEMV(id: string, parameter: string): string {
     return `${id}${len}${parameter}`;
 }
 
-export default { generate };
+export {QrCodePix};
+
