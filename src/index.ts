@@ -1,6 +1,6 @@
 import qrcode from 'qrcode';
 import { crc } from 'polycrc';
-import { string } from 'yup';
+import { string, number, boolean } from 'yup';
 
 interface IParameter {
     version: string;
@@ -23,11 +23,13 @@ function QrCodePix(parameter: IParameter) {
         throw new Error("version is fixed '01'");
     }
 
-    string().min(1, 'name: 1-25 characters').max(25, 'name: 1-25 characters').validateSync(name);
-
     string().min(2, 'countryCode: 2 characters').max(2, 'countryCode: 2 characters').nullable().validateSync(countryCode);
 
     string().min(8, 'cep: 8 characters').max(8, 'cep: 8 characters').nullable().validateSync(cep);
+
+    number().nullable().validateSync(value);
+
+    boolean().nullable().validateSync(notRepeatPayment);
 
     const payloadKeyString = generateKey(key, message);
 
