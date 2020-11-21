@@ -1,10 +1,18 @@
+# QrCode for PIX
+
+[![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
+
 ### Qrcode generator for the Brazilian payment system PIX
+
+---
 
 ## Installation
 
 ```bash
 yarn add qrcode-pix
 ```
+
+---
 
 ## Quick Start
 
@@ -26,6 +34,8 @@ console.log(qrCodePix.payload()); // '00020101021126510014BR.GOV.BCB.PIX...'
 console.log(await qrCodePix.base64()); // 'data:image/png;base64,iVBORw0...'
 ```
 
+---
+
 ## Interface
 
 ```js
@@ -42,4 +52,15 @@ interface IParameter {
     currency?: number; //default: 986 ('R$')
     countryCode?: string; //default: 'BR'
 }
+
+interface IResponse {
+    payload: () => string; //payload for QrCode
+    base64: () => Promise<string>; //QrCode image base64
+}
 ```
+
+---
+
+## Specification
+
+### Specification by Bacen [(DOC)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix-versao1.pdf)
