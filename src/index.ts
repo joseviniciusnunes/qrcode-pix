@@ -1,4 +1,4 @@
-import qrcode from 'qrcode';
+import qrcode, { QRCodeToDataURLOptions } from 'qrcode';
 import { crc } from 'polycrc';
 import { string, number, boolean } from 'yup';
 
@@ -81,7 +81,7 @@ function QrCodePix({
 
     return {
         payload: () => payloadPIX,
-        base64: () => qrcode.toDataURL(payloadPIX),
+        base64: (options?: QRCodeToDataURLOptions) => qrcode.toDataURL(payloadPIX, options),
     };
 }
 
