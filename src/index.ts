@@ -2,7 +2,7 @@ import qrcode from 'qrcode';
 import { crc } from 'polycrc';
 import { string, number, boolean } from 'yup';
 
-interface IParameter {
+interface QrCodePixParams {
     version: string;
     key: string;
     city: string;
@@ -16,9 +16,19 @@ interface IParameter {
     countryCode?: string;
 }
 
-function QrCodePix(parameter: IParameter) {
-    const { version, key, city, name, value, guid, message, cep, notRepeatPayment, currency, countryCode } = parameter;
-
+function QrCodePix({
+    version,
+    key,
+    city,
+    name,
+    value,
+    guid,
+    message,
+    cep,
+    notRepeatPayment,
+    currency = 986,
+    countryCode = 'BR',
+}: QrCodePixParams) {
     if (version !== '01') {
         throw new Error("version is fixed '01'");
     }
@@ -33,28 +43,19 @@ function QrCodePix(parameter: IParameter) {
 
     const payloadKeyString = generateKey(key, message);
 
-    const payload = [];
-    payload.push(genEMV('00', version));
-    payload.push(genEMV('01', !notRepeatPayment ? '11' : '12'));
-    payload.push(genEMV('26', payloadKeyString));
-    payload.push(genEMV('52', '0000'));
-
-    if (currency) {
-        payload.push(genEMV('53', String(currency)));
-    } else {
-        payload.push(genEMV('53', '986'));
-    }
+    const payload: string[] = [
+        genEMV('00', version),
+        genEMV('01', !notRepeatPayment ? '11' : '12'),
+        genEMV('26', payloadKeyString),
+        genEMV('52', '0000'),
+        genEMV('53', String(currency)),
+    ];
 
     if (value) {
         payload.push(genEMV('54', value.toFixed(2)));
     }
 
-    if (countryCode) {
-        payload.push(genEMV('58', countryCode.toUpperCase()));
-    } else {
-        payload.push(genEMV('58', 'BR'));
-    }
-
+    payload.push(genEMV('58', countryCode.toUpperCase()));
     payload.push(genEMV('59', name));
     payload.push(genEMV('60', city.toUpperCase()));
 
@@ -63,18 +64,18 @@ function QrCodePix(parameter: IParameter) {
     }
 
     if (guid) {
-        payload.push(genEMV('62', generateGUID(guid)));
+        payload.push(genEMV('62', genEMV('05', guid)));
     }
 
     payload.push('6304');
 
-    const payloadString = payload.join('');
-    const payloadBuffer = Buffer.from(payloadString, 'utf8');
+    const stringPayload = payload.join('');
+    const buffer = Buffer.from(stringPayload, 'utf8');
 
     const crc16CCiTT = crc(16, 0x1021, 0xffff, 0x0000, false);
-    const crcResult = crc16CCiTT(payloadBuffer).toString(16).toUpperCase();
+    const crcResult = crc16CCiTT(buffer).toString(16).toUpperCase();
 
-    const payloadPIX = `${payloadString}${crcResult}`;
+    const payloadPIX = `${stringPayload}${crcResult}`;
 
     return {
         payload: () => payloadPIX,
@@ -83,19 +84,11 @@ function QrCodePix(parameter: IParameter) {
 }
 
 function generateKey(key: string, message?: string): string {
-    const payloadKey = [];
-    payloadKey.push(genEMV('00', 'BR.GOV.BCB.PIX'));
-    payloadKey.push(genEMV('01', key));
+    const payload: string[] = [genEMV('00', 'BR.GOV.BCB.PIX'), genEMV('01', key)];
     if (message) {
-        payloadKey.push(genEMV('02', message));
+        payload.push(genEMV('02', message));
     }
-    return payloadKey.join('');
-}
-
-function generateGUID(guid: string): string {
-    const payloadGUID = [];
-    payloadGUID.push(genEMV('05', guid));
-    return payloadGUID.join('');
+    return payload.join('');
 }
 
 function genEMV(id: string, parameter: string): string {
@@ -103,4 +96,4 @@ function genEMV(id: string, parameter: string): string {
     return `${id}${len}${parameter}`;
 }
 
-export { QrCodePix };
+export { QrCodePixParams, QrCodePix };
