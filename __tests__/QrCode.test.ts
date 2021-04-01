@@ -114,6 +114,16 @@ describe('QRCode PIX Generate', () => {
             '00020101021226380014BR.GOV.BCB.PIX0116test@mail.com.br5204000053039865802BR5913Fulano de Tal6009SAO PAULO6304DC67'
         );
     });
+    it('should not accept negative values', () => {
+        const param: QrCodePixParams = {
+            version: '01',
+            key: 'test@mail.com.br',
+            name: 'Fulano de Tal',
+            city: 'SAO PAULO',
+            value: -10,
+        };
+        expect(() => QrCodePix(param)).toThrow('Value must be a positive number');
+    });
 });
 
 const qrCodeTest =

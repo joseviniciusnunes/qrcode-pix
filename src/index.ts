@@ -39,7 +39,7 @@ function QrCodePix({
 
     string().min(8, 'cep: 8 characters').max(8, 'cep: 8 characters').nullable().validateSync(cep);
 
-    number().nullable().validateSync(value);
+    number().nullable().positive('Value must be a positive number').validateSync(value);
 
     boolean().nullable().validateSync(notRepeatPayment);
 
