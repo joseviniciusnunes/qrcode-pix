@@ -29,11 +29,13 @@ function QrCodePix({
     currency = 986,
     countryCode = 'BR',
 }: QrCodePixParams) {
-    if (version !== '01') {
-        throw new Error("version is fixed '01'");
-    }
+    string().equals(['01'], 'Version not supported').validateSync(version);
 
-    string().min(2, 'countryCode: 2 characters').max(2, 'countryCode: 2 characters').nullable().validateSync(countryCode);
+    string()
+        .min(2, 'countryCode: 2 characters')
+        .max(2, 'countryCode: 2 characters')
+        .nullable()
+        .validateSync(countryCode);
 
     string().min(8, 'cep: 8 characters').max(8, 'cep: 8 characters').nullable().validateSync(cep);
 

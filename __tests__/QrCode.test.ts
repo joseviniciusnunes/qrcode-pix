@@ -8,7 +8,7 @@ describe('QRCode PIX Generate', () => {
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
         };
-        expect(() => QrCodePix(param)).toThrow(`version is fixed '01'`);
+        expect(() => QrCodePix(param)).toThrow(`Version not supported`);
     });
     it('Test QrCode', async () => {
         const response = QrCodePix({
