@@ -1,8 +1,10 @@
 # QrCode for PIX
 
-[![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
-
 ### Qrcode generator for the Brazilian payment system PIX
+
+---
+
+[![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
 
 ---
 
