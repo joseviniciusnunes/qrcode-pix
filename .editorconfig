@@ -6,7 +6,7 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 quote_type = single
-max_line_length = 150
+max_line_length = 120
 
 [**/**.yml]
 indent_style = space
