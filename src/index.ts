@@ -8,7 +8,7 @@ interface QrCodePixParams {
     city: string;
     name: string;
     value?: number;
-    guid?: string;
+    transactionId?: string;
     message?: string;
     cep?: string;
     notRepeatPayment?: boolean;
@@ -22,10 +22,10 @@ function QrCodePix({
     city,
     name,
     value,
-    guid,
     message,
     cep,
     notRepeatPayment,
+    transactionId = '***',
     currency = 986,
     countryCode = 'BR',
 }: QrCodePixParams) {
@@ -65,9 +65,7 @@ function QrCodePix({
         payload.push(genEMV('61', cep));
     }
 
-    if (guid) {
-        payload.push(genEMV('62', genEMV('05', guid)));
-    }
+    payload.push(genEMV('62', genEMV('05', transactionId)));
 
     payload.push('6304');
 
