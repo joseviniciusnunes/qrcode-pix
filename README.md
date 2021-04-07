@@ -1,8 +1,10 @@
 # QrCode for PIX
 
-[![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
-
 ### Qrcode generator for the Brazilian payment system PIX
+
+---
+
+[![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
 
 ---
 
@@ -55,7 +57,7 @@ interface IParameter {
 
 interface IResponse {
     payload: () => string; //payload for QrCode
-    base64: () => Promise<string>; //QrCode image base64
+    base64: (options?) => Promise<string>; //QrCode image base64
 }
 ```
 
