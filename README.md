@@ -11,7 +11,13 @@
 ## Installation
 
 ```bash
-yarn add qrcode-pix
+yarn add qrcode-pix --exact
+```
+
+or
+
+```bash
+npm i qrcode-pix --save-exact
 ```
 
 ---
@@ -65,4 +71,6 @@ interface IResponse {
 
 ## Specification
 
-### Specification by Bacen [(DOC)](https://www.bcb.gov.br/content/estabilidadefinanceira/forumpireunioes/Anexo%20I%20-%20Padr%C3%B5es%20para%20Inicia%C3%A7%C3%A3o%20do%20PIX.pdf)
+### Latest revision version: 3.0.2 (2021-04-11)
+
+### Specification by Bacen [(DOC)](https://www.bcb.gov.br/content/estabilidadefinanceira/forumpireunioes/AnexoI-PadroesParaIniciacaodoPix.pdf)
