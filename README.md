@@ -32,7 +32,7 @@ const qrCodePix = QrCodePix({
     key: 'test@mail.com.br', //or any PIX key
     name: 'Fulano de Tal',
     city: 'SAO PAULO',
-    guid: 'YOUR_GUID',
+    transactionId: 'YOUR_TRANSACTION_ID',
     message: 'Pay me :)',
     cep: '99999999',
     value: 150.99,
@@ -53,7 +53,7 @@ interface IParameter {
     city: string;
     name: string;
     value?: number;
-    guid?: string;
+    transactionId?: string;
     message?: string;
     cep?: string;
     notRepeatPayment?: boolean; //default: false

@@ -78,16 +78,16 @@ describe('QRCode PIX Generate', () => {
             '00020101021126380014BR.GOV.BCB.PIX0116test@mail.com.br5204000053039865802BR5913Fulano de Tal6009SAO PAULO61088500010062070503***6304558C'
         );
     });
-    it('06 - Basic - guid', async () => {
+    it('06 - Basic - Transaction ID', async () => {
         const response = QrCodePix({
             version: '01',
             key: 'test@mail.com.br',
             name: 'Fulano de Tal',
             city: 'SAO PAULO',
-            transactionId: 'my_guid',
+            transactionId: 'my_transaction_id',
         });
         expect(response.payload()).toBe(
-            '00020101021126380014BR.GOV.BCB.PIX0116test@mail.com.br5204000053039865802BR5913Fulano de Tal6009SAO PAULO62110507my_guid63045CAB'
+            '00020101021126380014BR.GOV.BCB.PIX0116test@mail.com.br5204000053039865802BR5913Fulano de Tal6009SAO PAULO62210517my_transaction_id63046247'
         );
     });
     it('07 - Basic - message', async () => {
