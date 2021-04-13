@@ -1,9 +1,10 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22475804/114474255-346b1a00-9bcc-11eb-877f-0095c6fd5dba.jpg" height="200px" />
   <h1 align="center">QR Code PIX</h1>
-  <p align="center">QR Code generator for the Brazilian payment system PIX.<p>
 </p>
 <br />
+
+QR Code generator for the Brazilian payment system PIX
 
 [![badge-tests](https://github.com/joseviniciusnunes/qrcode-pix/workflows/Tests/badge.svg)](https://github.com/joseviniciusnunes/qrcode-pix/actions)
 [![npm-version](https://img.shields.io/npm/v/qrcode-pix?color=brightgreen&label=npm%20package)](https://www.npmjs.com/package/qrcode-pix)
