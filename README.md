@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22475804/114474255-346b1a00-9bcc-11eb-877f-0095c6fd5dba.jpg" height="200px" />
-  <h1 align="center">QR Code PIX</h1>
+  <h1 align="center">QR Code PIX - NodeJS</h1>
 </p>
 <br />
 
