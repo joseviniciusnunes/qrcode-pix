@@ -2,6 +2,8 @@ import qrcode, { QRCodeToDataURLOptions } from 'qrcode';
 import { crc } from 'polycrc';
 import { string, number, boolean } from 'yup';
 
+import ValidateName from './ValidateName';
+
 interface QrCodePixParams {
     version: string;
     key: string;
@@ -42,6 +44,8 @@ function QrCodePix({
     number().nullable().positive('Value must be a positive number').validateSync(value);
 
     boolean().nullable().validateSync(notRepeatPayment);
+
+    ValidateName.validate(name);
 
     const payloadKeyString = generateKey(key, message);
 

@@ -12,5 +12,6 @@
     },
     "include": ["src"],
     "exclude": ["__tests__/**"],
-    "declaration": true
+    "declaration": true,
+    "useUnknownInCatchVariables": false
 }
