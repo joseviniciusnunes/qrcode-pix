@@ -1,6 +1,6 @@
 import qrcode, { QRCodeToDataURLOptions } from 'qrcode';
 import { crc } from 'polycrc';
-import { string, number, boolean } from 'yup';
+import { string, number } from 'yup';
 
 interface QrCodePixParams {
     version: string;
@@ -11,7 +11,6 @@ interface QrCodePixParams {
     transactionId?: string;
     message?: string;
     cep?: string;
-    notRepeatPayment?: boolean;
     currency?: number;
     countryCode?: string;
 }
@@ -24,7 +23,6 @@ function QrCodePix({
     value,
     message,
     cep,
-    notRepeatPayment,
     transactionId = '***',
     currency = 986,
     countryCode = 'BR',
@@ -39,15 +37,18 @@ function QrCodePix({
 
     string().min(8, 'cep: 8 characters').max(8, 'cep: 8 characters').nullable().validateSync(cep);
 
+    if (String(value) === '0') {
+        value = undefined;
+    }
+
     number().nullable().positive('Value must be a positive number').validateSync(value);
 
-    boolean().nullable().validateSync(notRepeatPayment);
+    string().max(25, 'transactionId: max 25 characters').nullable().validateSync(transactionId);
 
     const payloadKeyString = generateKey(key, message);
 
     const payload: string[] = [
         genEMV('00', version),
-        genEMV('01', !notRepeatPayment ? '11' : '12'),
         genEMV('26', payloadKeyString),
         genEMV('52', '0000'),
         genEMV('53', String(currency)),
@@ -57,9 +58,21 @@ function QrCodePix({
         payload.push(genEMV('54', value.toFixed(2)));
     }
 
+    name = String(name)
+        .substring(0, 25)
+        .toUpperCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+    city = String(city)
+        .substring(0, 15)
+        .toUpperCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
     payload.push(genEMV('58', countryCode.toUpperCase()));
     payload.push(genEMV('59', name));
-    payload.push(genEMV('60', city.toUpperCase()));
+    payload.push(genEMV('60', city));
 
     if (cep) {
         payload.push(genEMV('61', cep));

@@ -8,11 +8,10 @@ interface QrCodePixParams {
     transactionId?: string;
     message?: string;
     cep?: string;
-    notRepeatPayment?: boolean;
     currency?: number;
     countryCode?: string;
 }
-declare function QrCodePix({ version, key, city, name, value, message, cep, notRepeatPayment, transactionId, currency, countryCode, }: QrCodePixParams): {
+declare function QrCodePix({ version, key, city, name, value, message, cep, transactionId, currency, countryCode, }: QrCodePixParams): {
     payload: () => string;
     base64: (options?: qrcode.QRCodeToDataURLOptions | undefined) => Promise<string>;
 };
