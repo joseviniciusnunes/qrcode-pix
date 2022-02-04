@@ -73,7 +73,7 @@ interface IResponse {
 
 ## Specification
 
-### Latest revision version: 3.0.2 (2022-02-02)
+### Latest revision version: 3.0.2 (2022-02-04)
 
 ### Specification by Bacen [(DOC)](https://www.bcb.gov.br/content/estabilidadefinanceira/forumpireunioes/AnexoI-PadroesParaIniciacaodoPix.pdf)
 
