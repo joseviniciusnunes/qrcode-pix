@@ -83,4 +83,4 @@ interface IResponse {
 
 ### Contribute to keeping revisions up to date.
 
-<img src="https://user-images.githubusercontent.com/22475804/152584043-f4e28661-66e5-4fef-a0c0-25ddea08a41d.png" height="200px" />
+<img src="https://user-images.githubusercontent.com/22475804/152584043-f4e28661-66e5-4fef-a0c0-25ddea08a41d.png" height="100px" />
