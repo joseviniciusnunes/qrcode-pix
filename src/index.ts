@@ -1,5 +1,5 @@
 import qrcode, { QRCodeToDataURLOptions } from 'qrcode';
-import { crc } from 'polycrc';
+import { crc16ccitt } from 'crc';
 import { string, number } from 'yup';
 
 interface QrCodePixParams {
@@ -85,8 +85,7 @@ function QrCodePix({
     const stringPayload = payload.join('');
     const buffer = Buffer.from(stringPayload, 'utf8');
 
-    const crc16CCiTT = crc(16, 0x1021, 0xffff, 0x0000, false);
-    const crcResult = crc16CCiTT(buffer).toString(16).toUpperCase().padStart(4, '0');
+    const crcResult = crc16ccitt(buffer).toString(16).toUpperCase().padStart(4, '0');
 
     const payloadPIX = `${stringPayload}${crcResult}`;
 
