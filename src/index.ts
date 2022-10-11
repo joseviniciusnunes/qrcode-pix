@@ -83,9 +83,7 @@ function QrCodePix({
     payload.push('6304');
 
     const stringPayload = payload.join('');
-    const buffer = Buffer.from(stringPayload, 'utf8');
-
-    const crcResult = crc16ccitt(buffer).toString(16).toUpperCase().padStart(4, '0');
+    const crcResult = crc16ccitt(stringPayload).toString(16).toUpperCase().padStart(4, '0');
 
     const payloadPIX = `${stringPayload}${crcResult}`;
 
