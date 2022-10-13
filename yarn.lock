@@ -604,13 +604,6 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
-"@types/polycrc@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@types/polycrc/-/polycrc-0.1.0.tgz#ca623d9d986909b02b1490afb915e1cb6842d4f8"
-  integrity sha512-diIfPlnrcC7eGzfrM9PqJ8rjaeOXZ+PBpXjzWYGzROrLYy0Mg4GBqAzNcEh2VBatjuA0Qa3gi3Bncq4fDaFlGA==
-  dependencies:
-    "@types/node" "*"
-
 "@types/prettier@^2.0.0":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.1.5.tgz#b6ab3bba29e16b821d84e09ecfaded462b816b00"
@@ -1146,6 +1139,11 @@ core-util-is@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+
+crc@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-4.1.1.tgz#cb926237b56739f82c8533da1b66925ed33e011f"
+  integrity sha512-2U3ZqJ2phJl9ANuP2q5VS53LMpNmYU9vcpmh6nutJmsqUREhtWpTRh9yYxG7sDg3xkwaEEXytSeffTxw4cgwPg==
 
 cross-spawn@^6.0.0:
   version "6.0.5"
@@ -3054,11 +3052,6 @@ pngjs@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-5.0.0.tgz#e79dd2b215767fd9c04561c01236df960bce7fbb"
   integrity sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==
-
-polycrc@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/polycrc/-/polycrc-1.1.0.tgz#7ee75bd0b47d377d26d78ee7f5c529dde0c77af0"
-  integrity sha512-rEOTU2hpsys8CwOre1XptjEm1pGA8F2mCLI0Hxb1lc7HweXi0m9K70FX5uiGB63v1kklyZ0UfbWNo7pOXp/BHg==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
